@@ -23,10 +23,12 @@ impl AppConfig {
         if !path.exists() {
             return Ok(Self::default());
         }
-        let raw = fs::read_to_string(path)
-            .with_context(|| format!("read config {}", path.display()))?;
+        let raw =
+            fs::read_to_string(path).with_context(|| format!("read config {}", path.display()))?;
         // Minimal TOML-ish: support JSON for simplicity if file is JSON; else defaults + key parsing
-        if path.extension().and_then(|e| e.to_str()) == Some("json") || raw.trim_start().starts_with('{') {
+        if path.extension().and_then(|e| e.to_str()) == Some("json")
+            || raw.trim_start().starts_with('{')
+        {
             let cfg: Self = serde_json::from_str(&raw)
                 .with_context(|| format!("parse config {}", path.display()))?;
             return Ok(cfg);

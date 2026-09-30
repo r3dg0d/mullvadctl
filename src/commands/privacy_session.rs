@@ -40,7 +40,9 @@ pub fn run(out: &OutputOpts, cfg: &AppConfig, paths: &XdgPaths, dry_run: bool) -
     }
 
     if dry_run {
-        notes.push("dry-run: would connect Mullvad, verify tunnel, wait for Ctrl+C, then restore".into());
+        notes.push(
+            "dry-run: would connect Mullvad, verify tunnel, wait for Ctrl+C, then restore".into(),
+        );
         out.emit_or_human(
             &SessionLive {
                 status: "dry-run".into(),

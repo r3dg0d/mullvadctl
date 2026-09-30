@@ -29,7 +29,11 @@ impl OutputOpts {
         Ok(())
     }
 
-    pub fn emit_or_human<T: Serialize>(&self, value: &T, human: impl FnOnce() -> String) -> anyhow::Result<()> {
+    pub fn emit_or_human<T: Serialize>(
+        &self,
+        value: &T,
+        human: impl FnOnce() -> String,
+    ) -> anyhow::Result<()> {
         if self.json {
             self.emit(value)?;
         } else if !self.quiet {

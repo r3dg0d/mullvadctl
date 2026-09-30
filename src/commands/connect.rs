@@ -36,7 +36,7 @@ pub fn run(
     }
 
     // After relay set, connect
-    let connect_args = vec!["connect".to_string()];
+    let connect_args = ["connect".to_string()];
 
     if dry_run {
         let plan = format!(

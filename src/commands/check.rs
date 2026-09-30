@@ -1,8 +1,6 @@
 use crate::mullvad::client;
 use crate::mullvad::parse::parse_status;
-use crate::net::check::{
-    connectivity_report, dns_leak_heuristics, fetch_public_ip,
-};
+use crate::net::check::{connectivity_report, dns_leak_heuristics, fetch_public_ip};
 use crate::util::config::AppConfig;
 use crate::util::output::OutputOpts;
 use anyhow::Result;

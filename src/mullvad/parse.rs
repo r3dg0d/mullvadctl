@@ -159,7 +159,7 @@ mod tests {
         assert_eq!(st.state, "Disconnected");
     }
 
-        #[test]
+    #[test]
     fn parse_relays() {
         let raw = r#"Sweden (se)
   Gothenburg (got)

@@ -163,7 +163,12 @@ fn main() -> Result<()> {
             country,
             city,
             provider,
-        } => commands::relay::run(&out, country.as_deref(), city.as_deref(), provider.as_deref())?,
+        } => commands::relay::run(
+            &out,
+            country.as_deref(),
+            city.as_deref(),
+            provider.as_deref(),
+        )?,
         Commands::Completions { .. } => unreachable!(),
     }
     Ok(())

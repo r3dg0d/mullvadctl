@@ -1,6 +1,6 @@
 use crate::mullvad::client;
 use crate::mullvad::parse::parse_status;
-use crate::net::check::{fetch_public_ip, read_dns_resolvers, list_ipv6_addrs};
+use crate::net::check::{fetch_public_ip, list_ipv6_addrs, read_dns_resolvers};
 use crate::util::config::AppConfig;
 use crate::util::output::OutputOpts;
 use anyhow::Result;

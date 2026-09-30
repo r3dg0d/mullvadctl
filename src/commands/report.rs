@@ -54,7 +54,10 @@ pub fn run(out: &OutputOpts, cfg: &AppConfig) -> Result<()> {
 
     out.emit_or_human(&report, || {
         let mut s = String::new();
-        s.push_str(&format!("mullvadctl OPSEC report @ {}\n", report.generated_at));
+        s.push_str(&format!(
+            "mullvadctl OPSEC report @ {}\n",
+            report.generated_at
+        ));
         s.push_str(&format!("{}\n\n", report.disclaimer));
         s.push_str(&format!("VPN state: {}\n", report.vpn.state));
         if let Some(r) = &report.vpn.relay {

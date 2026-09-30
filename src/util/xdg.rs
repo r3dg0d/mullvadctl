@@ -22,7 +22,10 @@ impl XdgPaths {
         Ok(Self {
             config_dir: dirs.config_dir().to_path_buf(),
             cache_dir: dirs.cache_dir().to_path_buf(),
-            state_dir: dirs.state_dir().map(|p| p.to_path_buf()).unwrap_or_else(|| dirs.data_dir().join("state")),
+            state_dir: dirs
+                .state_dir()
+                .map(|p| p.to_path_buf())
+                .unwrap_or_else(|| dirs.data_dir().join("state")),
             data_dir: dirs.data_dir().to_path_buf(),
         })
     }
@@ -34,8 +37,7 @@ impl XdgPaths {
             &self.state_dir,
             &self.data_dir,
         ] {
-            fs::create_dir_all(d)
-                .with_context(|| format!("create directory {}", d.display()))?;
+            fs::create_dir_all(d).with_context(|| format!("create directory {}", d.display()))?;
         }
         Ok(())
     }

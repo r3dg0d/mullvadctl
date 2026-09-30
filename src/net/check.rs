@@ -79,11 +79,7 @@ fn fetch_one(url: &str) -> Result<PublicIpInfo> {
             asn: v
                 .get("organization")
                 .and_then(|x| x.as_str())
-                .map(str::to_string)
-                .or_else(|| {
-                    v.get("blacklisted")
-                        .and_then(|_| None::<String>)
-                }),
+                .map(str::to_string),
             organization: v
                 .get("organization")
                 .and_then(|x| x.as_str())
@@ -107,9 +103,11 @@ fn fetch_one(url: &str) -> Result<PublicIpInfo> {
                     .map(str::to_string)
             }),
         city: v.get("city").and_then(|x| x.as_str()).map(str::to_string),
-        asn: v
-            .get("asn")
-            .and_then(|x| x.as_str().map(str::to_string).or_else(|| x.as_u64().map(|n| n.to_string()))),
+        asn: v.get("asn").and_then(|x| {
+            x.as_str()
+                .map(str::to_string)
+                .or_else(|| x.as_u64().map(|n| n.to_string()))
+        }),
         organization: v
             .get("asn_org")
             .and_then(|x| x.as_str())

@@ -50,7 +50,6 @@ pub fn run_mullvad_ok(args: &[&str]) -> Result<String> {
     Ok(String::from_utf8_lossy(&output.stdout).to_string())
 }
 
-
 /// Optional macrandom dependency.
 pub fn run_macrandom_if_present(dry_run: bool) -> Result<Option<String>> {
     let Some(bin) = which("macrandom") else {
